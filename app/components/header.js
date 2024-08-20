@@ -5,14 +5,29 @@ import { UserButton } from "@clerk/nextjs";
 export default async function Header() {
   const { userId } = auth();
   return (
-    <div className="bg-zinc-900">
+    <div className="bg-black">
       <div className="container mx-auto flex items-center justify-between py-4 text-white">
-        <Link
-          className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 lg:-ml-16"
-          href="/"
-        >
-          Home
+        <Link href="/">
+          <img
+            src="/SmartCards.svg"
+            alt="Smartcards"
+            className="lg:-ml-10 w-full h-10 mb-4"
+          />
         </Link>
+        <div className="flex justify-center mx-auto gap-10">
+          <div
+            id="features"
+            className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 "
+          >
+            Features
+          </div>
+          <div
+            id="pricing"
+            className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
+          >
+            Pricing
+          </div>
+        </div>
         {/* New MCQ Generator Link */}
         <div className="flex-grow" /> {/* Spacer */}
         <div className="flex items-center gap-10">
@@ -34,7 +49,7 @@ export default async function Header() {
             </>
           ) : (
             <Link
-              className="bg-yellow-500 p-2 rounded-xl hover:bg-yellow-600 text-white"
+              className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
               href="/sign-up"
             >
               Get started
