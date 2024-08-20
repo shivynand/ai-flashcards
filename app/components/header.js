@@ -15,18 +15,18 @@ export default async function Header() {
           />
         </Link>
         <div className="flex justify-center mx-auto gap-10">
-          <div
+          <button
             id="features"
             className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 "
           >
             Features
-          </div>
-          <div
+          </button>
+          <button
             id="pricing"
             className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
           >
             Pricing
-          </div>
+          </button>
         </div>
         {/* New MCQ Generator Link */}
         <div className="flex-grow" /> {/* Spacer */}
