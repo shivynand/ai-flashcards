@@ -38,12 +38,17 @@ async function generateFlashcards(prompt) {
   try {
     const result = await model.generateContent([systemPrompt, prompt]);
     const responseText = result.response.text();
-    console.log("Raw response text:", responseText);
+    console.log("Raw response text:", responseText); // Log the raw response
+
     const cleanedResponseText = responseText.replace(/```json|```/g, "").trim(); // Remove backticks and 'json'
+    
+    // Check if the response is valid JSON
+    if (!cleanedResponseText.startsWith("{")) {
+      throw new Error("Invalid response format: " + cleanedResponseText);
+    }
 
     // Parse the cleaned response text
     const generatedContent = JSON.parse(cleanedResponseText);
-
     return generatedContent.flashcards;
   } catch (error) {
     console.error("Error in generating flashcards:", error);
