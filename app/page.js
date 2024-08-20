@@ -21,13 +21,13 @@ export default function Home() {
         <div className="mt-10">
           {userId ? (
             <div></div>
-          ): (
+          ) : (
             <Link
-            className="p-4 text-4xl px-10 bg-yellow-500 rounded-xl"
-            href="/sign-up"
-          >
-            Try it out
-          </Link>
+              className="p-4 text-4xl px-10 bg-yellow-500 rounded-xl"
+              href="/sign-up"
+            >
+              Try it out
+            </Link>
           )}
         </div>
       </section>
@@ -76,8 +76,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Options */}
-      {/* <section className="w-full p-8 bg-white">
+      {/* Pricing Options
+      <section className="w-full p-8 bg-white">
         <h2 className="text-4xl font-bold text-center mb-6">Pricing</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-6 border border-gray-300 rounded-lg shadow-lg transition-transform transform hover:scale-105">
