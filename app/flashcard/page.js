@@ -148,7 +148,7 @@ export default function FlashcardGenerator() {
         </div>
         {flashcards.length > 0 && (
           <button
-            className="bg-yellow-500 hover:cursor-pointer hover:bg-yellow-600 text-white p-2 rounded-xl mt-4"
+            className="bg-yellow-500 hover:cursor-pointer hover:bg-yellow-600 text-white p-2 rounded-xl mt-4 px-2"
             onClick={handleOpen}
           >
             Save

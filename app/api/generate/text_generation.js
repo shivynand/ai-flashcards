@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import fs from 'fs';
+import fs from "fs";
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
@@ -43,25 +43,25 @@ function fileToGenerativePart(path, mimeType) {
 }
 
 async function generateFlashcards(prompt, imagePath = null) {
-    const parts = [systemPrompt, prompt];
-  
-    if (imagePath) {
-      const imagePart = fileToGenerativePart(imagePath, "image/jpeg");
-      parts.push(imagePart);
-    }
-  
-    const result = await model.generateContent(parts);
-    const responseText = result.response.text();
-    console.log(responseText);
-  
-    // Remove any markdown formatting if present
-    const jsonString = responseText.replace(/```json\n|\n```/g, '').trim();
-  
-    try {
-      return JSON.parse(jsonString).flashcards;
-    } catch (error) {
-      console.error("Error parsing JSON:", error);
-      throw new Error("Invalid response format from AI model");
-    }
+  const parts = [systemPrompt, prompt];
+
+  if (imagePath) {
+    const imagePart = fileToGenerativePart(imagePath, "image/jpeg");
+    parts.push(imagePart);
   }
+
+  const result = await model.generateContent(parts);
+  const responseText = result.response.text();
+  console.log(responseText);
+
+  // Remove any markdown formatting if present
+  const jsonString = responseText.replace(/```json\n|\n```/g, "").trim();
+
+  try {
+    return JSON.parse(jsonString).flashcards;
+  } catch (error) {
+    console.error("Error parsing JSON:", error);
+    throw new Error("Invalid response format from AI model");
+  }
+}
 export { generateFlashcards };
