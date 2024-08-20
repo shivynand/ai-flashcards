@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState } from "react"; 
 
 function MCQ({ question, options, onAnswerSelect, correctAnswer, feedback }) {
   const [selectedOption, setSelectedOption] = useState(null);
