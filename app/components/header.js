@@ -14,16 +14,16 @@ export default async function Header() {
           Home
         </Link>
         {/* New MCQ Generator Link */}
-        <Link
-          className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 lg:ml-4"
-          href="/mcq-generator"
-        >
-          MCQ Generator
-        </Link>
         <div className="flex-grow" /> {/* Spacer */}
         <div className="flex items-center gap-10">
           {userId ? (
             <>
+              <Link
+                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 lg:ml-4"
+                href="/mcq-generator"
+              >
+                MCQ Generator
+              </Link>
               <Link
                 className="rounded-xl px-4 py-2 bg-yellow-500 text-white hover:cursor-pointer hover:bg-yellow-600"
                 href="/flashcard"
