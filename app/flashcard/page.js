@@ -119,7 +119,7 @@ export default function FlashcardGenerator() {
   };
 
   return (
-    <div className="bg-zinc-900 min-h-screen">
+    <div className="bg-zinc-800 min-h-screen">
       <div className="container p-4 ">
         <h1 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
           Flashcard Generator
