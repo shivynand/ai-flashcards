@@ -18,8 +18,6 @@ export default function Home() {
           Say 👋 BYE BYE 👋 to traditional, passive learning and learn better.
           You deserve to.
         </p>
-        {/* Flashcard Generator Section */}
-        {/* <Link className="flex flex-col mt-auto bg-white text-black rounded-full p-3 "href="/flashcard">Get started!</Link> Add the FlashcardGenerator component here */}
         <div className="mt-10">
           {userId ? (
             <div></div>
