@@ -14,33 +14,25 @@ export default async function Header() {
             className="lg:-ml-10 w-full h-10 mb-4"
           />
         </Link>
-        <div className="flex justify-center mx-auto gap-10">
-          <button
-            id="features"
-            className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 "
-          >
-            Features
-          </button>
-          <button
-            id="pricing"
-            className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
-          >
-            Pricing
-          </button>
-        </div>
         {/* New MCQ Generator Link */}
         <div className="flex-grow" /> {/* Spacer */}
         <div className="flex items-center gap-10">
           {userId ? (
             <>
               <Link
-                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 lg:ml-4"
+                href="/dashboard"
+                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
+              >
+                Dashboard
+              </Link>
+              <Link
+                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 ml-2"
                 href="/mcq-generator"
               >
                 MCQ Generator
               </Link>
               <Link
-                className="rounded-xl px-4 py-2 bg-yellow-500 text-white hover:cursor-pointer hover:bg-yellow-600"
+                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
                 href="/flashcard"
               >
                 Flashcards!
@@ -48,12 +40,28 @@ export default async function Header() {
               <UserButton afterSignOutUrl="/" />
             </>
           ) : (
-            <Link
-              className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
-              href="/sign-up"
-            >
-              Get started
-            </Link>
+            <>
+              <div className="flex justify-center mx-auto gap-10">
+                <button
+                  id="features"
+                  className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 "
+                >
+                  Features
+                </button>
+                <button
+                  id="pricing"
+                  className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
+                >
+                  Pricing
+                </button>
+              </div>
+              <Link
+                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
+                href="/sign-up"
+              >
+                Get started
+              </Link>
+            </>
           )}
         </div>
       </div>
