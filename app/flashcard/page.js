@@ -156,20 +156,10 @@ export default function FlashcardGenerator() {
     handleClose();
   };
 
-  const nextFlashcard = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % flashcards.length);
-    setIsFlipped(false); // Reset flip state
-  };
-
-  const prevFlashcard = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + flashcards.length) % flashcards.length
-    );
-    setIsFlipped(false); // Reset flip state
-  };
-
-  const toggleFlip = () => {
-    setIsFlipped((prevState) => !prevState);
+  const toggleFlip = (index) => {
+    const newFlashcards = [...flashcards];
+    newFlashcards[index].isFlipped = !newFlashcards[index].isFlipped;
+    setFlashcards(newFlashcards);
   };
 
   return (
@@ -187,80 +177,41 @@ export default function FlashcardGenerator() {
             className="w-full p-4 border rounded"
           />
         </div>
-        <button
-          onClick={generateFlashcards}
-          disabled={isLoading}
-          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
-        >
-          {isLoading ? "Generating..." : "Generate"}
-        </button>
+        <div className="flex gap-4">
+          <button
+            onClick={generateFlashcards}
+            disabled={isLoading}
+            className="bg-blue-500 text-white p-2 px-3 rounded hover:bg-blue-600 disabled:bg-gray-400"
+          >
+            {isLoading ? "Generating..." : "Generate"}
+          </button>
+          {flashcards.length > 0 && (
+            <button
+              onClick={handleSave}
+              className="bg-yellow-500 text-white p-3 px-4 rounded hover:bg-yellow-600"
+            >
+              Save
+            </button>
+          )}
+        </div>
         {error && <p className="text-red-500 mt-2">{error}</p>}
       </div>
 
       {flashcards.length > 0 && (
-        <div className="mt-4 flex flex-col items-center">
-          <div className="flex justify-between items-center w-[800px]">
-            <button
-              onClick={prevFlashcard}
-              className="bg-gray-300 text-black p-4 rounded mr-4"
+        <div className="mt-4 pb-4 grid grid-cols-3 gap-4 justify-items-center">
+          {flashcards.map((flashcard, index) => (
+            <div
+              key={index}
+              className="bg-zinc-900 text-white p-10 rounded-lg shadow-lg w-[30vw] h-[300px] flex flex-col items-center justify-center border-4 border-yellow-500"
             >
-              &#9664; {/* Left Arrow */}
-            </button>
-
-            <div className="bg-white p-10 rounded-lg shadow-lg w-[800px] h-[400px] flex flex-col items-center justify-center">
               <Flashcard
-                front={flashcards[currentIndex].front} // Question displayed
-                back={flashcards[currentIndex].back} // Answer displayed
-                isFlipped={isFlipped}
-                onClick={toggleFlip} // Flip on click
+                front={flashcard.front} // Question displayed
+                back={flashcard.back} // Answer displayed
+                isFlipped={flashcard.isFlipped || false}
+                onClick={() => toggleFlip(index)} // Flip on click
               />
             </div>
-
-            <button
-              onClick={nextFlashcard}
-              className="bg-gray-300 text-black p-4 rounded ml-4"
-            >
-              &#9654; {/* Right Arrow */}
-            </button>
-          </div>
-
-          <button
-            onClick={handleOpen}
-            className="bg-yellow-500 text-white p-2 mt-7 rounded  w-[200px] h-[50px]"
-          >
-            Save Flashcards
-          </button>
-        </div>
-      )}
-
-      {open && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold mb-4">
-              Please enter a name for your flashcards collection
-            </h2>
-            <input
-              type="text"
-              value={collectionName}
-              onChange={(e) => setCollectionName(e.target.value)}
-              className="border p-2 rounded w-full mb-4"
-              placeholder="Collection Name"
-            />
-            <div className="flex justify-end">
-              <button
-                className="bg-gray-300 text-black p-2 rounded mr-2"
-                onClick={handleClose}
-              >
-                Cancel
-              </button>
-              <button
-                className="bg-yellow-500 text-white p-2 rounded"
-                onClick={handleSave}
-              >
-                Save
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
       )}
     </div>

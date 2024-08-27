@@ -9,7 +9,7 @@ export default async function Header() {
       <div className="container mx-auto flex items-center justify-between py-2 text-white">
         <Link href="/">
           <img
-            src="Smartcards.svg"
+            src="SmartCards.svg"
             alt="Smartcards"
             className="lg:-ml-10 w-full h-10 mb-4"
           />
