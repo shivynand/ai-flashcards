@@ -5,27 +5,34 @@ import { UserButton } from "@clerk/nextjs";
 export default async function Header() {
   const { userId } = auth();
   return (
-    <div className="bg-zinc-900">
-      <div className="container mx-auto flex items-center justify-between py-4 text-white">
-        <Link
-          className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 lg:-ml-16"
-          href="/"
-        >
-          Home
+    <div className="bg-black">
+      <div className="container mx-auto flex items-center justify-between py-2 text-white">
+        <Link href="/">
+          <img
+            src="Smartcards.svg"
+            alt="Smartcards"
+            className="lg:-ml-10 w-full h-10 mb-4"
+          />
         </Link>
         {/* New MCQ Generator Link */}
-        <Link
-          className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 lg:ml-4"
-          href="/mcq-generator"
-        >
-          MCQ Generator
-        </Link>
         <div className="flex-grow" /> {/* Spacer */}
         <div className="flex items-center gap-10">
           {userId ? (
             <>
               <Link
-                className="rounded-xl px-4 py-2 bg-yellow-500 text-white hover:cursor-pointer hover:bg-yellow-600"
+                href="/dashboard"
+                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
+              >
+                Dashboard
+              </Link>
+              <Link
+                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 ml-2"
+                href="/mcq-generator"
+              >
+                MCQ Generator
+              </Link>
+              <Link
+                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
                 href="/flashcard"
               >
                 Flashcards!
@@ -33,12 +40,28 @@ export default async function Header() {
               <UserButton afterSignOutUrl="/" />
             </>
           ) : (
-            <Link
-              className="bg-yellow-500 p-2 rounded-xl hover:bg-yellow-600 text-white"
-              href="/sign-up"
-            >
-              Get started
-            </Link>
+            <>
+              <div className="flex justify-center mx-auto gap-10">
+                <button
+                  id="features"
+                  className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 "
+                >
+                  Features
+                </button>
+                <button
+                  id="pricing"
+                  className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
+                >
+                  Pricing
+                </button>
+              </div>
+              <Link
+                className="hover:text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
+                href="/sign-up"
+              >
+                Get started
+              </Link>
+            </>
           )}
         </div>
       </div>
