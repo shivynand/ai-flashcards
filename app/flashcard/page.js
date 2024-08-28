@@ -41,16 +41,18 @@ export default function FlashcardGenerator() {
         },
         body: JSON.stringify({ prompt }),
       });
-
+  
+      const responseText = await res.text(); // Get raw response text
+      console.log("Raw response:", responseText); // Log it for debugging
+  
       if (res.ok) {
-        const data = await res.json();
+        const data = JSON.parse(responseText); // Parse JSON only if the response is OK
         setFlashcards(data.flashcards);
         setCurrentIndex(0);
-        setIsFlipped(false); // Reset flip state
+        setIsFlipped(false);
       } else {
-        const errorData = await res.json();
-        setError(errorData.error || "Error generating flashcards");
-        console.error("Error generating flashcards:", errorData.error);
+        setError(responseText); // Set error to raw response
+        console.error("Error generating flashcards:", responseText);
       }
     } catch (err) {
       setError("An unexpected error occurred");
