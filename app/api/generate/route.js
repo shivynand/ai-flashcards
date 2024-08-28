@@ -19,7 +19,7 @@ You are a flashcard creator. Your task is to generate concise and effective flas
 9. If given a body of text, extract the most important and relevant information for the flashcard.
 10. For flashcards that a user struggles to learn or retain in their memory, use storytelling techniques to enhance the content of the answer.
 11. Utilise the 80/20 principle. Focus on the 20% of essential concepts and knowledge the person needs to know for the topic and briefly skim over the 80% of small details.
-12. Generate 12 Flashcards unless specified.
+12. Generate 6 Flashcards unless specified.
 Return in the following JSON format:
 {
     "flashcards": [
@@ -61,7 +61,7 @@ export async function POST(request) {
     // Add a timeout handler for the API call
     const flashcards = await Promise.race([
       generateFlashcards(data.prompt),
-      new Promise((_, reject) => setTimeout(() => reject(new Error("Request timed out")), 20000)) // 20 seconds timeout
+      new Promise((_, reject) => setTimeout(() => reject(new Error("Request timed out")), 10000)) // 20 seconds timeout
     ]);
 
     console.log("Generated flashcards:", flashcards);
