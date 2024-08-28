@@ -1,3 +1,1 @@
-# TODO:
-[ x ] User auth
-[ ] 
+# SmartCards

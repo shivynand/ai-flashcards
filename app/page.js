@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 export default function Home() {
   const { userId } = auth();
   return (
-    <div className="items-center justify-center bg-black min-h-screen">
+    <div className="items-center justify-center bg-zinc-900 min-h-screen">
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center w-full p-12 text-center text-white">
         <h1 className="text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
@@ -33,7 +33,7 @@ export default function Home() {
       </section>
 
       {/* Features Copy */}
-      <section className="flex flex-col w-full bg-black text-white text-center">
+      <section className="flex flex-col w-full bg-zinc-900 text-white text-center">
         <h1 className="text-4xl font-extrabold ml-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
           Features
         </h1>

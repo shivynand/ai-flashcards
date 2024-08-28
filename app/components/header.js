@@ -6,10 +6,10 @@ export default async function Header() {
   const { userId } = auth();
   return (
     <div className="bg-black">
-      <div className="container mx-auto flex items-center justify-between py-2 text-white">
+      <div className="container mx-auto flex items-center justify-between py-4 text-white">
         <Link href="/">
           <img
-            src="SmartCards.svg"
+            src="Smartcards.svg"
             alt="Smartcards"
             className="lg:-ml-10 w-full h-10 mb-4"
           />
