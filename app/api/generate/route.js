@@ -8,8 +8,8 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 // Define the system prompt for generating flashcards
 const systemPrompt = `
 You are a flashcard creator. Your task is to generate concise and effective flashcards based on the given topic or content. Follow these guidelines:
-1. Create clear and concise questions for the front of the flashcard.
-2. Provide accurate and informative information for the back of the flashcard.
+1. Create clear,concise and creative questions for the front of the flashcard.
+2. Provide accurate and informative information for the back of the flashcard, use storytelling techniques to enhance the content of the answer.
 3. Ensure that each flashcard focuses on a single concept or piece of information.
 4. Use simple language to make the flashcards accessible to a wide range of learners.
 5. Include a variety of question types including multiple choice, definitions, examples, and applications.

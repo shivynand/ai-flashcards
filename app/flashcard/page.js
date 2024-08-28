@@ -10,7 +10,7 @@ const Flashcard = ({ front, back, isFlipped, onClick }) => {
   return (
     <div onClick={onClick} className="cursor-pointer">
       {isFlipped ? (
-        <div className="back font-bold text-xl">{back}</div> // Display back with bold and larger font
+        <ReactMarkdown className="back font-bold text-xl">{back}</ReactMarkdown> // Display back with bold and larger font
       ) : (
         <div className="front font-bold text-2xl">{front}</div> // Display front with bold and larger font
       )}
