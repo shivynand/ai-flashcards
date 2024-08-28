@@ -61,7 +61,7 @@ export async function POST(request) {
     // Add a timeout handler for the API call
     const flashcards = await Promise.race([
       generateFlashcards(data.prompt),
-      new Promise((_, reject) => setTimeout(() => reject(new Error("Request timed out")), 10000)) // 10 seconds timeout
+      new Promise((_, reject) => setTimeout(() => reject(new Error("Request timed out")), 20000)) // 20 seconds timeout
     ]);
 
     console.log("Generated flashcards:", flashcards);
